@@ -1,0 +1,8 @@
+{% extends 'my_portfolio/base.html' %}
+{% block metadescription %}This is Adrianos Dervis personal blog{% endblock metadescription %}
+{% block title %}Dervis-Article{% endblock title %}
+{% block content %}
+<main>
+  {{ article.title|safe }}
+</main>
+{% endblock content %}

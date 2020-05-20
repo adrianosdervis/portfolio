@@ -1,0 +1,24 @@
+{% extends 'my_portfolio/base.html' %}
+{% block metadescription %}This is Adrianos Dervis personal blog{% endblock metadescription %}
+{% block title %}Dervis-Blog{% endblock title %}
+{% block content %}
+<main>
+  <div class="articles-container">
+    {% for blog in blogs %}
+    <div class="articles">
+      <div class="articles-info">
+        <a href="{% url 'blog:article' blog.id %}">
+          <h3>{{ blog.title }}</h3>
+        </a>
+        <h5>{{ blog.date|date:'j/n/Y' }}</h5>
+      </div>
+      <img src="{{ blog.main_image.url }}" alt="" />
+      <div class="article-description">
+        <p>{{ blog.description|striptags|truncatechars:100 }}</p>
+        <a href="{% url 'blog:article' blog.id %}" target="_blank">More..</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock content %}
